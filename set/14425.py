@@ -1,6 +1,9 @@
 a, b = map(int, input().split())
 
-lst=[(input()) for _ in range(b)]
+lst=[]
+for i in range(b):
+  t=input()
+  lst.append(t)
 
 str_lst = lst[0:a]
 check_lst = lst[a:]
