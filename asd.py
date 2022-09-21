@@ -1,6 +1,2 @@
-a = [1,2,3,4,5]
-b = [-3]
+a = list(map(int, input().split()))
 print(a)
-print([a])
-s = sum([a],b)
-print(s)
