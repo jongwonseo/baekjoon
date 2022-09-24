@@ -1,0 +1,27 @@
+def tree(dp, n,k):
+  dp[n][k] = dp[n-1][k-1] + dp[n-1][k]
+from math import gcd
+from math import sqrt
+
+n, k = map(int, input().split())
+ns = list([1] for _ in range(n))
+
+
+interval = list()
+ans = list()
+
+for i in range(1, n):
+    interval.append(ns[i] - ns[i - 1])
+
+prev = interval[0]
+for i in range(1, len(interval)):
+    prev = gcd(prev, interval[i])
+
+for i in range(2, int(sqrt(prev)) + 1): #제곱근까지만 탐색
+    if prev % i == 0:
+        ans.append(i)
+        ans.append(prev//i)
+ans.append(prev)
+ans = list(set(ans)) #중복이 있을수 있으니 제거
+ans.sort()
+print(*ans)
