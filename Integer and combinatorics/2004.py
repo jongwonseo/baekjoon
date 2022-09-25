@@ -1,5 +1,3 @@
-def tree(dp, n,k):
-  dp[n][k] = dp[n-1][k-1] + dp[n-1][k]
 from math import gcd
 from math import sqrt
 

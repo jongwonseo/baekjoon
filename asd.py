@@ -1,9 +1,4 @@
-dic  = {}
+lst = [1,2,3,4]
+lst = ''.join(str(s) for s in lst)
 
-for _ in range(10000):
-  name ,type = input().split()
-  if type not in dic.keys():
-    dic[type]=[]
-  
-  dic[type].append(name)
-  print(dic)
+print(lst)
