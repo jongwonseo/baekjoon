@@ -1,4 +1,3 @@
-lst = [1,2,3,4]
-lst = ''.join(str(s) for s in lst)
-
-print(lst)
+lst = [ [1,2,3], [1,2,3], [1,2,3] ]
+lr2 = [(0,0), (0,1), (0,2)]
+print(sum(i for i in lst ))

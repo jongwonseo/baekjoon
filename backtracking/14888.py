@@ -28,7 +28,9 @@ def f():
     return
   
   for data in num_lst:
-    s.append(str(data))
+    if data in n_lst:
+      continue
+    n_lst.append(str(data))
     for opr in opr_lst:
       s.append(opr)
       f()
@@ -43,6 +45,6 @@ opr_lst = map(int, input().split())
 max= 0
 min = 10000000000
 opr_lst = opr_f(opr_lst)
-s = []
-
+n_lst = []
+o_lst = []
 print(max ,min)
