@@ -1,10 +1,6 @@
-from turtle import position
-
-
 def f(depth):
   global cnt
   if depth == n:
-    print(lst)
     cnt +=1
     return
 
