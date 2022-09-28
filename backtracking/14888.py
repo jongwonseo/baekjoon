@@ -1,50 +1,43 @@
-def opr_f(opr_lst):
-  lst = []
-  for i, size in enumerate(opr_lst):
-    if i==0:
-      for size in range(size): 
-        lst.append('+')
-    elif i==1:
-      for size in range(size): 
-        lst.append('-')
-    elif i==2:
-      for size in range(size): 
-        lst.append('*')
-    else:
-      for size in range(size): 
-        lst.append('/')
-  return lst
-
-
-def f():
-  if len(s) == n+(n-1):
-    num = ''.join(i for i in s)
-    print(num)
-    num = eval(num)
-    if num > max:
-      max = num
-    if num < min:
-      min = num
-    return
-  
-  for data in num_lst:
-    if data in n_lst:
-      continue
-    n_lst.append(str(data))
-    for opr in opr_lst:
-      s.append(opr)
-      f()
-      s.pop()
-    s.pop()
-
-
 n = int(input())
-num_lst = map(int, input().split())
-opr_lst = map(int, input().split())
+number = list(map(int, input().split()))
+op = list(map(int, input().split()))
+minR = int(1e9)
+maxR = -int(1e9)
 
-max= 0
-min = 10000000000
-opr_lst = opr_f(opr_lst)
-n_lst = []
-o_lst = []
-print(max ,min)
+answer = number[0]
+
+def dfs(idx):
+    global answer
+    global minR, maxR
+
+    if idx == n:
+        if answer > maxR:
+            maxR = answer
+        if answer < minR:
+            minR = answer
+        return
+
+    for i in range(4):
+        tmp = answer
+        if op[i] > 0:
+            if i == 0:
+                answer += number[idx]
+            elif i == 1:
+                answer -= number[idx]
+            elif i == 2:
+                answer *= number[idx]
+            else:
+                if answer >= 0:
+                    answer //= number[idx]
+                else:
+                    answer = (-answer // number[idx]) * -1
+
+            op[i] -= 1
+            dfs(idx+1)
+            answer = tmp
+            op[i] += 1
+
+
+dfs(1)
+print(maxR)
+print(minR)

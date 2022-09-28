@@ -1,25 +1,5 @@
-#opr_lst에 조합된 숫자들을 opr_f을 통해 연산자로 바꾸고
-#num_lst 사이사이에 opr_lst를 끼워넣고 
-#eval함수를 통해 수식계산
-def lst_sum():
-  global min, max
-  lst = []
-  for i ,data in enumerate(cur_opr_lst):
-    lst.append(str(num_lst[i]))
-    lst.append(data)
-  lst.append(str(num_lst[-1]))
+from re import I
 
-  string = ''.join(lst)
-  print(string)
-
-  _sum = eval(string)
-
-  if _sum < min:
-    min = _sum 
-  if _sum > max:
-    max = _sum
-     
-  return
 
 def opr_f(opr_lst):
   lst = []
@@ -39,16 +19,32 @@ def opr_f(opr_lst):
   return lst
 
 def dfs(size):
-  if size == len(opr_lst):
-    lst_sum()
+  global max, min, answer
+  
+  if size == len(num_lst):
+    if answer < min:
+      min = answer 
+    if answer > max:
+      max = answer
     return
 
   for i in range(len(opr_lst)):
+    tmp =answer
     if(tf_lst[i] == 0):
-      cur_opr_lst.append(opr_lst[i])
+      if opr_lst[i] =='+':
+        answer += num_lst[size]
+      elif opr_lst[i] =='-':
+        answer -= num_lst[size]
+      elif opr_lst[i] =='*':
+        answer *= num_lst[size]
+      elif opr_lst[i] =='//':
+        if answer >= 0:
+          answer //= num_lst[size]
+      else:
+          answer = (-answer // num_lst[size]) * -1
       tf_lst[i]=1
       dfs(size+1)
-      cur_opr_lst.pop()
+      answer = tmp
       tf_lst[i]=0
 
 
@@ -60,9 +56,9 @@ min = 10000000000
 max = 0
 
 opr_lst = opr_f(opr_lst)
-cur_opr_lst=[]
-tf_lst=[0]*n
+tf_lst=[0]*len(opr_lst)
+answer = num_lst[0]
 
-dfs(0)
+dfs(1)
 print(max)
 print(min)
