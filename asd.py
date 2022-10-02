@@ -1,2 +1,5 @@
-for i in str(1234)[1:]:
-  print(i)
+n = int(input())
+lst = []
+for _ in range(n):
+  lst.append(int(input()))
+  print(lst)
