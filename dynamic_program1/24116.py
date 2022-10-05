@@ -1,25 +1,17 @@
 def fib(n):
-  global cnt_fib
-  if n == 1 or n == 2:
-    return 1  # 코드1
-  else:
-    cnt_fib +=1
-    return (fib(n - 1) + fib(n - 2))
-
+    if n==1 or n==2:
+        return 1
+    else:
+        return fib(n-1)+fib(n-2)
+        
 def fibonacci(n):
-  global cnt_fibonacci
-  f =[1]*(n+1)
+    dp=[0]*(n+1)
+    dp[1],dp[2]=1,1
+    cnt2=0
+    for i in range(3,n+1):
+        cnt2+=1
+        dp[i]=dp[i-1]+dp[i-2]
+    return cnt2
 
-
-  for i in range(3, n+1):
-      cnt_fibonacci +=1
-      f[i] = f[i - 1] + f[i - 2]  # 코드2
-  return f[n];
-
-n = int(input())
-cnt_fib = 1
-cnt_fibonacci = 0
-
-fib(n)
-fibonacci(n)
-print(cnt_fib, cnt_fibonacci , end=' ')
+n=int(input())
+print(fib(n),fibonacci(n))
