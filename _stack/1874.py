@@ -17,7 +17,6 @@ for _ in range(n):
     opt.append('-')
   else:
     flag = True
-    break
 
 if flag:
   print('NO')

@@ -9,12 +9,11 @@ for _ in range(T):
   n = int(input())
   x = sys.stdin.readline().rstrip()
 
-  if n==0:
+  if x=="[]":
     print('error')
     continue
 
-  x = deque(x[1:-1].split(','))
-  print(x)
+  x = deque(map(int, x[1:-1].split(',')))
   rev_cnt = 0 #뒤집기 플레그
   for cmd in command:
     if cmd == 'R':
