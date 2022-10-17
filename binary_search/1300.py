@@ -1,9 +1,20 @@
 n = int(input())
 k = int(input())
 
-lst = []
-for i in range(1,n+1):
-  for j in range(1,n+1):
-    lst.append(i*j)
-lst.sort()
-print(lst[k])
+start, end = 1, k
+answer = None
+
+while start <= end:
+  mid = (start + end)//2
+
+  tmp = 0
+  for i in range(1,n+1):
+    tmp += min(mid//i,n)
+
+  if tmp >=k:
+    answer = mid
+    end = mid - 1
+  else:
+    start = mid + 1
+
+print(answer)

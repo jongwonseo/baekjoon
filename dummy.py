@@ -1,10 +1,20 @@
 n = int(input())
-n_lst = list(map(int, input().split()))
-n_lst.sort()
-n_lst.insert(0,0)
-print(n_lst)
+k = int(input())
 
-m = int(input())
-m_lst = list(map(int, input().split()))
+start, end = 1, n**2
+answer = None
 
-first = 1
+while start <= end:
+  mid = (start + end)//2
+  tmp = 0
+  for i in range(1,n+1):
+    tmp += min(mid//i,n)
+
+  if tmp==k:
+    print(answer)
+  if tmp >=k:
+    answer = mid
+    end = mid - 1
+  else:
+    start = mid + 1
+
