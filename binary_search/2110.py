@@ -19,8 +19,6 @@ def binary_search(a):
             if a[i] - cur >= mid:
                 cur = a[i]
                 cnt += 1
-        if cnt == c:
-          print(f'left:{left}, right:{right}, cnt:{cnt}')
 
         if cnt >= c:
             left = mid + 1

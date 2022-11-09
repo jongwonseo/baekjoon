@@ -1,20 +1,31 @@
-n = int(input())
-k = int(input())
+from sys import stdin
 
-start, end = 1, n**2
-answer = None
 
-while start <= end:
-  mid = (start + end)//2
-  tmp = 0
-  for i in range(1,n+1):
-    tmp += min(mid//i,n)
+input = stdin.readline
 
-  if tmp==k:
-    print(answer)
-  if tmp >=k:
-    answer = mid
-    end = mid - 1
-  else:
-    start = mid + 1
+n, c = map(int, input().split())
+a = [int(input()) for _ in range(n)]
 
+
+def binary_search(a):
+    left, right = 1, a[-1] - a[0]
+
+    while left <= right:
+        mid = (left + right) // 2
+        cur = a[0]
+        cnt = 1
+
+        for i in range(1, len(a)):
+            if a[i] - cur >= mid:
+                cur = a[i]
+                cnt += 1
+
+        elif cnt > c:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return right
+
+
+print(binary_search(sorted(a)))
