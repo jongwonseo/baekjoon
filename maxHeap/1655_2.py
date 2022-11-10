@@ -9,7 +9,6 @@ for _ in range(n):
   num = int(sys.stdin.readline())
   heapq.heappush(heap, num)
 
-  print(heap)
   deep_heap = copy.deepcopy(heap)
   if len(deep_heap)%2==1:
     for _ in range(len(deep_heap)//2):
