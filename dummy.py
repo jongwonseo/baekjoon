@@ -1,2 +1,4 @@
-for i in range(3,-1,-1):
-    print(i)
+string = 'abcdef'
+
+string = string.split('cd')
+print(string)

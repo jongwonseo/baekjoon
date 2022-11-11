@@ -12,4 +12,4 @@ for i in range(1,n):
     NGF[idx] = lst[i]
   stack.append(i)
 
-print(NGF)
+print(*NGF)
