@@ -1,4 +1,1 @@
-string = 'abcdef'
-
-string = string.split('cd')
-print(string)
+print(False==0)
