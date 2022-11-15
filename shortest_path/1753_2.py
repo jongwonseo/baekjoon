@@ -19,7 +19,6 @@ for _ in range(m):
   # fr에서 to까지 cost가 든다
 
 def dijkstra(start):
-  cnt = 1
   q = []
 
   heapq.heappush(q,start)
@@ -27,7 +26,6 @@ def dijkstra(start):
   distance[start] = 0
 
   while q:
-    cnt +=1
     #거리가(dist 또는 cost)가 가장 짧은 정점을 pop
     now = heapq.heappop(q)
     now_cost = distance[now]
@@ -42,7 +40,7 @@ def dijkstra(start):
       if cost < distance[to]:
         distance[to] = cost
         heapq.heappush(q, to)
-  print(cnt)
+
 dijkstra(start)
 
 for cost in distance[1:]:
