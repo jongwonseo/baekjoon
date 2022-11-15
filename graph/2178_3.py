@@ -20,7 +20,6 @@ def bfs(x, y):
 
     while queue:
         x, y = queue.popleft()
-        print(x, y, cnt)
         cnt+=1
         for i in range(4):
             nx = x + dx[i]
