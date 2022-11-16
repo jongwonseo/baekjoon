@@ -12,9 +12,7 @@ for idx, chr in enumerate(s2):
 s2_index = s1.index(search_chr)
 for idx, chr in enumerate(s2):
   if index == idx:
-    for c in s1:
-      print(c, end= '')
-    print()
+    print(s1)
   else:
     for j in range(len(s1)):
       if s2_index== j:
