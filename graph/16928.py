@@ -16,31 +16,26 @@ def bfs():
     for next_step in range(1,7):
       next_x = cur_x + next_step
 
-      if next_x > 100:
-        break
-      
-      if flag[next_x] == True:
-        continue
+      if next_x <= 100 and flag[next_x] == False:
+        dd = next_x
+        
+        for lad in ladder:
+          s = lad[0]
+          d = lad[1]
+          if next_x == s:
+            dd = d  
+            break
 
-      for lad, snk in zip(ladder, snake):
-        s_lad = lad[0]
-        d_lad = lad[1]
+        for snk in snake:
+          s = snk[0]
+          d = snk[1]
 
-        s_snk = snk[0]
-        d_snk = snk[1]
-
-        if next_x == s_lad:
-          queue.append((d_lad, cur_cnt+1))
-          flag[d_lad] = True
-          break
-
-        if next_x == s_snk:
-          queue.append((d_snk, cur_cnt+1))
-          flag[d_snk] = True
-          break
-      
-      queue.append((next_x, cur_cnt+1))
-      flag[next_x] = True
+          if next_x == s:
+            dd = d
+            break
+      if not flag[dd]:
+        flag[dd] = True
+        queue.append((next_x, cur_cnt+1))
 
 n, m = map(int, input().split())
 
